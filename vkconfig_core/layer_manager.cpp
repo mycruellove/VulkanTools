@@ -119,7 +119,7 @@ void LayerManager::LoadAllInstalledLayers() {
     }
 
     // FIFTH: See if thee is anyting in the VULKAN_SDK path that wasn't already found elsewhere
-    if (!qgetenv("VULKAN_SDK").isEmpty()) {
+    if (!environment.paths.GetPath(PATH_VULKAN_SDK).empty()) {
         LoadLayersFromPath(GetPath(BUILTIN_PATH_EXPLICIT_LAYERS));
     }
 }
@@ -155,7 +155,7 @@ void LayerManager::LoadLayer(const std::string &layer_name) {
     }
 
     // FIFTH: See if thee is anyting in the VULKAN_SDK path that wasn't already found elsewhere
-    if (!qgetenv("VULKAN_SDK").isEmpty()) {
+    if (!environment.paths.GetPath(PATH_VULKAN_SDK).empty()) {
         if (LoadLayerFromPath(layer_name, GetPath(BUILTIN_PATH_EXPLICIT_LAYERS))) return;
     }
 }
